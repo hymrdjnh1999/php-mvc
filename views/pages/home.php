@@ -1,7 +1,8 @@
 <div class="body">
-<?php if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    echo $result;
-}?>
+    <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // if (isset($result))
+        //     echo $result;
+    } ?>
     <div class="main-content">
         <div class="home-page__body ">
             <div class="hero ">

@@ -1,4 +1,4 @@
-<?php ?>
+<?php include_once("./session.php") ?>
 <?php
 class User
 {
@@ -34,9 +34,12 @@ class User
         $req  = $db->prepare("INSERT INTO users(user_name,user_email,user_password,user_address) VALUES(:name,:email,:password,:address)");
         $res = $req->execute(array('name'=>$name,'email'=>$email,'password'=>$password,'address'=>$address));
         if($res){
-            return 'okkkkk';
+            Session::init();
+            Session::setSession('name',$name);
+            $test = Session::getSession('name');
+            // return '<script>alert("'.$test.'")</script>';
         }
-        return 'not ok';
+        return '<script>alert("Có lỗi trong quá trình đăng ký")</script>';
     }
 }
 ?>

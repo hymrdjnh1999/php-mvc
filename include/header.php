@@ -197,49 +197,52 @@
                                 Liên hệ
                             </a>
                         </li>
-
-                        <li class="header__navbar-item  max-height ">
-                            <label data="register" for="formData" class="header__navbar-item-link max-height header__navbar-item--separation header__navbar-item--separation-sm">
-                                Đăng ký
-                            </label>
-                        </li>
-                        <li class="header__navbar-item max-height ">
-                            <label for="formData" class="header__navbar-item-link max-height" data="login">
-                                Đăng nhập
-                            </label>
-                        </li>
                         <?php
-                        // if ($isLogin) {
-                        //     // login success
-                        //     echo '<li class="header__navbar-item max-height header__navbar-item--has-child">
-                        //         <a href="" class="header__navbar-item-link max-height">
-                        //             <div class="header__avatar">
-                        //                 <img src="./assets/img/avatar.jpg" alt="" class="header__avatar-img">
-                        //             </div>
-                        //             <span class="header__user">
-                        //                 ' . $_SESSION['name'] . '
-                        //             </span>
-                        //         </a>
-                        //         <ul class="user__action-list triangle">
-                        //             <li class="user_action-item">
-                        //                 <a href="" class="user__action-item-link">
-                        //                     Tài khoản của tôi
-                        //                 </a>
-                        //             </li>
-                        //             <li class="user_action-item">
-                        //                 <a href="" class="user__action-item-link">
-                        //                     Chỉnh sửa thông tin
-                        //                 </a>
-                        //             </li>
-                        //             <li class="user_action-item">
-                        //                 <span class="user__action-item-link">
-                        //                     Đăng xuất
-                        //                 </span>
-                        //             </li>
-                        //         </ul>
-                        //     </li>';
-                        // }
+                        if (!isset($_SESSION['name'])) {
                         ?>
+                            <li class="header__navbar-item  max-height ">
+                                <label data="register" for="formData" class="header__navbar-item-link max-height header__navbar-item--separation header__navbar-item--separation-sm">
+                                    Đăng ký
+                                </label>
+                            </li>
+                            <li class="header__navbar-item max-height ">
+                                <label for="formData" class="header__navbar-item-link max-height" data="login">
+                                    Đăng nhập
+                                </label>
+                            </li>
+
+                        <?php
+                        } else {
+                        ?>
+                            <li class="header__navbar-item max-height header__navbar-item--has-child">
+                                <a href="" class="header__navbar-item-link max-height">
+                                    <div class="header__avatar">
+                                        <img src="./assets/img/avatar.jpg" alt="" class="header__avatar-img">
+                                    </div>
+                                    <span class="header__user">
+                                        ' . $_SESSION['name'] . '
+                                    </span>
+                                </a>
+                                <ul class="user__action-list triangle">
+                                    <li class="user_action-item">
+                                        <a href="" class="user__action-item-link">
+                                            Tài khoản của tôi
+                                        </a>
+                                    </li>
+                                    <li class="user_action-item">
+                                        <a href="" class="user__action-item-link">
+                                            Chỉnh sửa thông tin
+                                        </a>
+                                    </li>
+                                    <li class="user_action-item">
+                                        <span class="user__action-item-link">
+                                            Đăng xuất
+                                        </span>
+                                    </li>
+                                </ul>
+                            </li>
+                        <?php
+                        } ?>
                     </ul>
                 </div>
                 <!-- header with search -->
