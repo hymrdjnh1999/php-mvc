@@ -174,3 +174,9 @@ ul {
 .error .form-input:hover{
 	border: 1px solid red;
 }
+
+
+.b-0{
+	border : unset;
+	outline: unset;
+}

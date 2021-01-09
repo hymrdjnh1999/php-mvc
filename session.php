@@ -30,7 +30,7 @@
 
         public static function destroySession(){
             session_destroy();
-            header('location: ?controller=pages');
+            // header('location: index.php?controller=pages');
         }
     }
 ?>

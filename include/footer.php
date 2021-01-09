@@ -1,4 +1,5 @@
 <!-- <?php include_once './class/User.php'; ?> -->
+
 <div class="footer">
     <div class="footer__line">
     </div>
@@ -123,7 +124,7 @@
     </div>
     <!-- form__wrap--active -->
     <div class="form__wrap" data="register">
-        <form action="index.php?controller=pages&action=register" method="post" class="form" id="form-1">
+        <form action='<?php $_SERVER['PHP_SELF'] ?>' method="post" class="form" id="form-1">
             <h3 class="form-heading">
                 Thành viên đăng ký
             </h3>
@@ -194,7 +195,7 @@
                 <span class="form-message">
                 </span>
             </div>
-            <button class="form-btn" type="submit">
+            <button class="form-btn" type="submit" name="login" value="true">
                 Đăng nhập
             </button>
         </form>

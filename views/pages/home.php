@@ -1,7 +1,20 @@
+<?php
+include_once("./models/user.php");
+include_once("./session.php");
+?>
+
 <div class="body">
     <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // if (isset($result))
-        //     echo $result;
+        // echo '<script>alert("ok")</script>';
+        if (isset($_POST['logout']) && $_POST['logout']) {
+            header("Location: index.php?controller=pages&action=logout");
+        }
+        else{
+        header("Location: index.php?controller=pages&action=home");
+            
+        }
+        User::register($_POST['email'], $_POST['password'], $_POST['name'], $_POST['address']);
+        header("Location: index.php?controller=pages&action=register");
     } ?>
     <div class="main-content">
         <div class="home-page__body ">

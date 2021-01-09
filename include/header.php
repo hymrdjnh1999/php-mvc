@@ -1,3 +1,7 @@
+<?php include_once("./session.php"); ?>
+<?php
+Session::init();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -220,7 +224,7 @@
                                         <img src="./assets/img/avatar.jpg" alt="" class="header__avatar-img">
                                     </div>
                                     <span class="header__user">
-                                        ' . $_SESSION['name'] . '
+                                        <?php echo $_SESSION['name']; ?>
                                     </span>
                                 </a>
                                 <ul class="user__action-list triangle">
@@ -235,9 +239,11 @@
                                         </a>
                                     </li>
                                     <li class="user_action-item">
-                                        <span class="user__action-item-link">
-                                            Đăng xuất
-                                        </span>
+                                        <form action="" method="post">
+                                            <button type="submit" value="true" name="logout" class="b-0 user__action-item-link">
+                                                Đăng Xuất
+                                            </button>
+                                        </form>
                                     </li>
                                 </ul>
                             </li>

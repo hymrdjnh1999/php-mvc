@@ -4,7 +4,7 @@ const handleHeaderBtnClick = () => {
 	headerBtnElements.forEach((headerBtnElement) => {
 		headerBtnElement.onclick = () => {
 			let headerBtnElementData = headerBtnElement.getAttribute('data');
-			handleDisplayActiveElement(headerBtnElementData, removeInputValue);
+			return handleDisplayActiveElement(headerBtnElementData, removeInputValue);
 		};
 	});
 };
@@ -46,7 +46,7 @@ const handleDisplayActiveElement = (data, callback) => {
 				formSelectBtnElement.classList.add(formSelectElementActiveClass);
 			}
 		}
-		handleDisplayForm(data);
+		return handleDisplayForm(data);
 	});
 };
 const handleDisplayForm = (data) => {
