@@ -20,11 +20,11 @@ class PagesController extends  BaseController
     {
         $this->render('home', []);
     }
-    public function logout()
-    {
-        session_destroy();
-        $this->render('home', []);
-    }
+    // public function logout()
+    // {
+    //     session_destroy();
+    //     $this->render('home', []);
+    // }
 }
 
 ?>

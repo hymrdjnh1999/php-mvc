@@ -1,5 +1,7 @@
 <!-- <?php include_once './class/User.php'; ?> -->
+<?php
 
+?>
 <div class="footer">
     <div class="footer__line">
     </div>
@@ -174,28 +176,36 @@
         </form>
     </div>
     <div class="form__wrap" data="login">
-        <form action="" method="post" class="form" id="form-2">
+        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" class="form" id="form-2">
             <h3 class="form-heading">
                 Thành viên đăng nhập
             </h3>
             <p class="desc">
                 Đăng nhập vào hệ thống cửa hàng!
             </p>
-            <span class="form-message">
-            </span>
+
+
             <div class="form-group">
+                <span class="" id="login-message">
+                </span>
                 <label for="email" class="form-label">Email</label>
-                <input type="text" class="form-input" placeholder="VD: dinhdt.nde19026@vtc.edu.vn" id="email" name="email">
+                <input type="text" class="form-input" placeholder="VD: dinhdt.nde19026@vtc.edu.vn" id="email" name="loginEmail">
                 <span class="form-message">
                 </span>
             </div>
             <div class="form-group">
                 <label for="password" class="form-label">Mật khẩu</label>
-                <input type="password" class="form-input" placeholder="Nhập mật khẩu" id="password" name="password" autocomplete="on">
+                <input type="password" class="form-input" placeholder="Nhập mật khẩu" id="password" name="loginPassword" autocomplete="on">
                 <span class="form-message">
                 </span>
             </div>
-            <button class="form-btn" type="submit" name="login" value="true">
+            <div class="form-group d-none">
+                <label for="password" class="form-label">Mật khẩu</label>
+                <input type="text" class="form-input" value="test" id="checkField" name="isLogin" autocomplete="on">
+                <span class="form-message">
+                </span>
+            </div>
+            <button class="form-btn" type="submit">
                 Đăng nhập
             </button>
         </form>
@@ -214,7 +224,6 @@
 <script src="./assets/js/app.js"></script>
 <script src="./assets/js/slider_show.js"></script>
 <script src="./assets/js/formHandler.js"></script>
-
 <script>
     $('#register-email').on('change', ((e) => {
         $.ajax({
@@ -267,11 +276,10 @@
                 return document.querySelector('#form-1 #register-password').value;
             }, 'Mật khẩu nhập lại không chính xác'),
             Validator.isRequired('#register-address', 'Vui lòng nhập địa chỉ'),
-        ]
-        // ,
-        // onSubmit: function(data) {
-        //   console.log(data);
-        // }
+        ],
+        onSubmit: function(data,formElement) {
+            formElement.submit();
+        }
     });
 </script>
 
@@ -286,15 +294,40 @@
             Validator.isRequired('#email', 'Không được để trống email'),
             Validator.isEmail('#email'),
             Validator.isRequired('#password', 'Mật khẩu không được để trống'),
+        ],
+        onSubmit: (data, formElement) => {
+            $.ajax({
+                method: 'POST',
+                url: './login.php',
+                data: {
+                    email: data.loginEmail,
+                    password: data.loginPassword
+                },
+                success: (data) => {
+                    console.log(data);
+                    if (data.trim() !== 'ok') {
+                        $("#login-message").text(data);
+                        $("#login-message").css({
+                            display: 'block',
+                            color: 'red',
+                            marginBottom: '10px',
+                            fontSize: '16px'
+                        });
+                        return;
+                    }
+                    formElement.submit();
+                    // console.log($("#login-message").class());
+                }
+            })
 
-        ]
-        // ,
-        // onSubmit: function(data) {
-        //   console.log(data);
-        // }
+        }
     });
 </script>
+<script>
+    const test = () => {
 
+    }
+</script>
 </body>
 
 </html>
