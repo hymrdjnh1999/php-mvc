@@ -1,7 +1,6 @@
 <?php require_once('base_controller.php') ?>
 <?php require_once('./models/user.php') ?>
 <?php
-session_start();
 class PagesController extends  BaseController
 {
     function __construct()
