@@ -1,29 +1,5 @@
-<?php
-include_once("./models/user.php");
-include_once("./session.php");
-?>
 
 <div class="body">
-    <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if (isset($_POST['loginEmail']) && isset($_POST['loginPassword'])) {
-            User::login($_POST['loginEmail'], $_POST['loginPassword']);
-            header("Location: index.php?controller=pages&action=home");
-            return;
-        }
-        if (isset($_POST['logout']) && $_POST['logout']) {
-            session_destroy();
-            header("Location: index.php?controller=pages&action=home");
-            return;
-        }
-        //  else {
-        //     header("Location: index.php?controller=pages&action=home");
-        //     return;
-        // }
-        echo $_POST['email'];
-        User::register($_POST['email'], $_POST['password'], $_POST['name'], $_POST['address']);
-        header("Location: index.php?controller=pages&action=register");
-        return;
-    } ?>
     <div class="main-content">
         <div class="home-page__body ">
             <div class="hero ">

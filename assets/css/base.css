@@ -183,3 +183,10 @@ ul {
 .d-none{
 	display: none;
 }
+
+.d-flex{
+	display : flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}

@@ -14,8 +14,7 @@ class UsersController extends BaseController
         if(!$user){
             header('location: index.php?controller=pages&action=error');
         }
-        $result = User::update($user);
-        $this->render('user_update', array('result' => $result));
+        $this->render('user_update', []);
     }
 }
 ?>

@@ -277,7 +277,21 @@
             }, 'Mật khẩu nhập lại không chính xác'),
             Validator.isRequired('#register-address', 'Vui lòng nhập địa chỉ'),
         ],
-        onSubmit: function(data,formElement) {
+        onSubmit: function(data, formElement) {
+            hiddenForm();
+            formElement.submit();
+        }
+    });
+    Validator({
+        form: '#form-3',
+        errorSelector: '.form-message',
+        erorrClass: 'error',
+        formGroup: '.form-group',
+        rules: [
+            Validator.isRequired('#register-fullname', 'Vui lòng nhập đầy đủ họ tên của bạn'),
+            Validator.isRequired('#register-address', 'Vui lòng nhập địa chỉ'),
+        ],
+        onSubmit: function(data, formElement) {
             formElement.submit();
         }
     });
@@ -304,7 +318,6 @@
                     password: data.loginPassword
                 },
                 success: (data) => {
-                    console.log(data);
                     if (data.trim() !== 'ok') {
                         $("#login-message").text(data);
                         $("#login-message").css({
@@ -315,6 +328,8 @@
                         });
                         return;
                     }
+                    
+                    hiddenForm();
                     formElement.submit();
                     // console.log($("#login-message").class());
                 }

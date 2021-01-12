@@ -76,3 +76,13 @@ const removeErrorOnReloadForm = (formElement) => {
 		}
 	});
 };
+
+
+const hiddenForm = ()=>{
+	let inputElement = document.querySelector('#formData');
+	if(inputElement){
+		inputElement.checked = false;
+		alert(inputElement.checked);
+	}
+	
+}

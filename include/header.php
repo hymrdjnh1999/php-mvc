@@ -1,7 +1,34 @@
 <?php include_once("./session.php"); ?>
 <?php
+include_once("./models/user.php");
+?>
+
+
+<?php
 Session::init();
 ?>
+<?php
+$updateResult = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['loginEmail']) && isset($_POST['loginPassword'])) {
+        User::login($_POST['loginEmail'], $_POST['loginPassword']);
+        header("Location: " . $_SERVER['PHP_SELF']);
+        return;
+    }
+    if (isset($_POST['logout']) && $_POST['logout']) {
+        session_destroy();
+        header("Location: " . $_SERVER['PHP_SELF']);
+        return;
+    } else if (isset($_POST['update-address']) && isset($_POST['update-name'])) {
+        User::update($_POST['update-address'], $_POST['update-name']);
+        header("Location: index.php?controller=users&action=update&id=" . $_GET['id']);
+        $updateResult = 'Cập nhật thông tin thành công!';
+        return;
+    }
+    User::register($_POST['email'], $_POST['password'], $_POST['name'], $_POST['address']);
+    header("Location: " . $_SERVER['PHP_SELF']);
+    return;
+} ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -218,13 +245,13 @@ Session::init();
                         <?php
                         } else {
                         ?>
-                            <li class="header__navbar-item max-height header__navbar-item--has-child">
+                            <li id="flagElement" class="header__navbar-item max-height header__navbar-item--has-child">
                                 <a href="" class="header__navbar-item-link max-height">
                                     <div class="header__avatar">
                                         <img src="./assets/img/avatar.jpg" alt="" class="header__avatar-img">
                                     </div>
                                     <span class="header__user">
-                                        <?php echo $_SESSION['name']; ?>
+                                        <?php echo $_SESSION['name'] ?>
                                     </span>
                                 </a>
                                 <ul class="user__action-list triangle">
@@ -234,7 +261,7 @@ Session::init();
                                         </a>
                                     </li>
                                     <li class="user_action-item">
-                                        <a href="" class="user__action-item-link">
+                                        <a href="index.php?controller=users&action=update&id=<?php echo $_SESSION['id']; ?>" class="user__action-item-link">
                                             Chỉnh sửa thông tin
                                         </a>
                                     </li>
