@@ -1,3 +1,4 @@
+<?php include('././include/header.php'); ?>
 <div class="">
     <form class="d-flex" action='' method="post" class="form" id="form-3">
         <h3 class="form-heading">
@@ -54,3 +55,4 @@
         ?>
     </form>
 </div>
+<?php include('././include/footer.php'); ?>
