@@ -19,7 +19,9 @@
 
 <body>
     <div class="app">
+        <?php include './include/header.php'?>
         <?= @$content ?>
+        <?php include './include/footer.php'?>
     </div>
 </body>
 

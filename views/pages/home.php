@@ -1,4 +1,3 @@
-<?php include('././include/header.php'); ?>
 <div class="body">
     <div class="main-content">
         <div class="home-page__body ">
@@ -1921,4 +1920,3 @@
 
     <!-- end home-page__body -->
 </div>
-<?php include('././include/footer.php'); ?>

@@ -1,4 +1,3 @@
-<?php include('././include/header.php'); ?>
 <div class="">
     <form class="d-flex" action='' method="post" class="form" id="form-3">
         <h3 class="form-heading">
@@ -9,10 +8,7 @@
         </p>
         <span class="d-block" style="margin-top: 20px; color:#22CCBB;font-size:18px">
             <?php
-            if(isset($_SESSION['updateResult'])){
-                echo $_SESSION['updateResult'];
-                $_SESSION['updateResult']='';
-            }
+            echo $hello;
             ?>
         </span>
         <div class="form-group">
@@ -55,4 +51,3 @@
         ?>
     </form>
 </div>
-<?php include('././include/footer.php'); ?>

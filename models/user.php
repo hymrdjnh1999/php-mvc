@@ -5,7 +5,6 @@ Session::init();
 class User
 {
     public $id, $name, $email, $address, $password;
-
     public function __construct($id, $email, $name, $password, $address)
     {
         $this->name = $name;
@@ -64,9 +63,10 @@ class User
         if ($res) {
             Session::setSession('name',$name); 
             Session::setSession('address',$address); 
-            Session::setSession('updateResult','Cập nhật thông tin thành công!'); 
+            // Session::setSession('updateResult','Cập nhật thông tin thành công!'); 
+            return 'ok';
         }
-        return null;
+        return 'fail';
     }
     public static function login($email, $password)
     {

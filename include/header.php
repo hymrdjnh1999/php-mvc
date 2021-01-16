@@ -13,22 +13,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['loginEmail']) && isset($_POST['loginPassword'])) {
         User::login($_POST['loginEmail'], $_POST['loginPassword']);
         header("Location: " . $_SERVER['PHP_SELF']);
-        return;
-    }
-    if (isset($_POST['logout']) && $_POST['logout']) {
+    } else if (isset($_POST['logout']) && $_POST['logout']) {
         session_destroy();
         header("Location: " . $_SERVER['PHP_SELF']);
-        return;
-    } else if (isset($_POST['update-address']) && isset($_POST['update-name'])) {
-        User::update($_POST['update-address'], $_POST['update-name']);
-        header("Location: index.php?controller=users&action=update&id=" . $_GET['id']);
-        $updateResult = 'Cập nhật thông tin thành công!';
-        return;
+    } else if ($_POST['email'] && $_POST['password'] &&  $_POST['name'] && $_POST['address']) {
+        User::register($_POST['email'], $_POST['password'], $_POST['name'], $_POST['address']);
+        header("Location: " . $_SERVER['PHP_SELF']);
     }
-    User::register($_POST['email'], $_POST['password'], $_POST['name'], $_POST['address']);
-    header("Location: " . $_SERVER['PHP_SELF']);
-    return;
-} ?>
+}
+?>
 
 <div class="header">
     <div class="header__navbar ">
