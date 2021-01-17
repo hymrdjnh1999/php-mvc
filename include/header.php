@@ -241,9 +241,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </li>
                             <li class="user_action-item">
                                 <form action="" method="post">
-                                    <button type="submit" value="true" name="logout" class="b-0 user__action-item-link">
+                                    <a href="index.php?controller=users&action=logout" class="b-0 user__action-item-link">
                                         Đăng Xuất
-                                    </button>
+                                    </a>
                                 </form>
                             </li>
                         </ul>
