@@ -10,12 +10,12 @@ class UsersController extends BaseController
 
     public function update()
     {
-        
+        if(!isset($_SESSION['name'])){
+            header('location: index.php');
+        }
         $result = '';
         if (isset($_POST['update-name'])) {
             $result =  User::update($_POST['update-address'], $_POST['update-name']);
-        }else{
-            header('location: index.php');
         }
         // $user = User::find($_GET['id']);
         // if(!$user){
@@ -29,6 +29,10 @@ class UsersController extends BaseController
     }
     public function details(){
         $this->render('user_details');
+    }
+    public function logout(){
+        session_destroy();
+        header('location: index.php');
     }
 }
 

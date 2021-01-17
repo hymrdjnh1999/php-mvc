@@ -84,6 +84,7 @@ class User
             Session::setSession('email', $user['user_email']);
             Session::setSession('address', $user['user_address']);
             Session::setSession('id', $user['user_id']);
+            return 'ok';
         }
     }
     public static function register($email, $password, $name, $address)
@@ -98,6 +99,7 @@ class User
             Session::setSession('email', $email);
             Session::setSession('address', $address);
             Session::setSession('id',$user->id);
+            return  'ok';
             // return '<script>alert("'.$test.'")</script>';
         }
         return '<script>alert("Có lỗi trong quá trình đăng ký")</script>';

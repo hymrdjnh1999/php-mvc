@@ -11,14 +11,15 @@ Session::init();
 $updateResult = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['loginEmail']) && isset($_POST['loginPassword'])) {
-        User::login($_POST['loginEmail'], $_POST['loginPassword']);
-        header("Location: " . $_SERVER['PHP_SELF']);
-    } else if (isset($_POST['logout']) && $_POST['logout']) {
-        session_destroy();
-        header("Location: " . $_SERVER['PHP_SELF']);
+        $result = User::login($_POST['loginEmail'], $_POST['loginPassword']);
+        if ($result === 'ok') {
+            header("Location: index.php");
+        }
     } else if (isset($_POST['email']) && isset($_POST['password']) &&  isset($_POST['name']) && isset($_POST['address'])) {
-        User::register($_POST['email'], $_POST['password'], $_POST['name'], $_POST['address']);
-        header("Location: " . $_SERVER['PHP_SELF']);
+        $registerResult = User::register($_POST['email'], $_POST['password'], $_POST['name'], $_POST['address']);
+        if ($registerResult === 'ok') {
+            header("Location: index.php");
+        }
     }
 }
 ?>
