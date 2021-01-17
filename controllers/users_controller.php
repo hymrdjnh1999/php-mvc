@@ -10,9 +10,12 @@ class UsersController extends BaseController
 
     public function update()
     {
+        
         $result = '';
         if (isset($_POST['update-name'])) {
             $result =  User::update($_POST['update-address'], $_POST['update-name']);
+        }else{
+            header('location: index.php');
         }
         // $user = User::find($_GET['id']);
         // if(!$user){
@@ -24,5 +27,9 @@ class UsersController extends BaseController
         
         $this->render('user_update', array('hello' => $result));
     }
+    public function details(){
+        $this->render('user_details');
+    }
 }
+
 ?>

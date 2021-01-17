@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else if (isset($_POST['logout']) && $_POST['logout']) {
         session_destroy();
         header("Location: " . $_SERVER['PHP_SELF']);
-    } else if ($_POST['email'] && $_POST['password'] &&  $_POST['name'] && $_POST['address']) {
+    } else if (isset($_POST['email']) && isset($_POST['password']) &&  isset($_POST['name']) && isset($_POST['address'])) {
         User::register($_POST['email'], $_POST['password'], $_POST['name'], $_POST['address']);
         header("Location: " . $_SERVER['PHP_SELF']);
     }
@@ -229,7 +229,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </a>
                         <ul class="user__action-list triangle">
                             <li class="user_action-item">
-                                <a href="" class="user__action-item-link">
+                                <a href="index.php?controller=users&action=details" class="user__action-item-link">
                                     Tài khoản của tôi
                                 </a>
                             </li>
@@ -256,7 +256,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="header__with-search-wrap container">
 
                 <div class="header__navbar-logo">
-                    <a href="/" class="header__navbar-logo-link">
+                    <a href="index.php" class="header__navbar-logo-link">
                         <img src="./assets/img/logo.png" alt="" class="header__navbar-logo-img">
                     </a>
                 </div>
