@@ -30,6 +30,7 @@
     position: relative;
 }
 .header__navbar-item label{ 
+    
     font-weight : 500; 
 }
 .header__navbar-item:hover .header__navbar-item-link{

@@ -235,7 +235,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </a>
                             </li>
                             <li class="user_action-item">
-                                <a href="index.php?controller=users&action=update&id=<?php echo $_SESSION['id']; ?>" class="user__action-item-link">
+                                <a href="index.php?controller=users&action=update" class="user__action-item-link">
                                     Chỉnh sửa thông tin
                                 </a>
                             </li>
