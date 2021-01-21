@@ -29,18 +29,7 @@
             <span class="form-message">
             </span>
         </div>
-        <!-- <div class="form-group">
-            <label for="password" class="form-label">Mật khẩu</label>
-            <input type="password" class="form-input" placeholder="Nhập mật khẩu" id="register-password" name="password" autocomplete="on">
-            <span class="form-message">
-            </span>
-        </div>
-        <div class="form-group">
-            <label for="password-comfirmation" class="form-label">Nhập lại mật khẩu</label>
-            <input type="password" class="form-input" placeholder="Nhập lại mật khẩu" id="password-comfirmation" name="password-comfirmation" autocomplete="on">
-            <span class="form-message">
-            </span>
-        </div> -->
+      
         <button class="form-btn" type="submit" style="width: 180px;">
             Cập nhật
         </button>

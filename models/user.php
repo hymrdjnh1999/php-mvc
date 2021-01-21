@@ -48,7 +48,7 @@ class User
         return null;
     }
 
-    public static function update($address,$name)
+    public static function update($address, $name)
     {
         $db = DBConnection::getInstance();
         $query = 'UPDATE users SET user_name= :name,user_address = :address WHERE user_id = :id AND user_email = :email';
@@ -61,8 +61,8 @@ class User
         );
         $res = $stmt->execute($array);
         if ($res) {
-            Session::setSession('name',$name); 
-            Session::setSession('address',$address); 
+            Session::setSession('name', $name);
+            Session::setSession('address', $address);
             // Session::setSession('updateResult','Cập nhật thông tin thành công!'); 
             return 'ok';
         }
@@ -98,11 +98,32 @@ class User
             Session::setSession('name', $name);
             Session::setSession('email', $email);
             Session::setSession('address', $address);
-            Session::setSession('id',$user->id);
+            Session::setSession('id', $user->id);
             return  'ok';
             // return '<script>alert("'.$test.'")</script>';
         }
         return '<script>alert("Có lỗi trong quá trình đăng ký")</script>';
+    }
+    public static function changePassword($oldPass, $newPass)
+    {
+        $db = DBConnection::getInstance();
+        $email = Session::getSession('email');
+        $user = self::findByEmail($email);
+        if($oldPass!== $user->password){
+            return 'Mật khẩu cũ không đúng.';
+        }
+        $query = 'UPDATE users SET user_password= :password WHERE user_id = :id AND user_email = :email';
+        $stmt = $db->prepare($query);
+        $array = array(
+            'password'=>$newPass,
+            'id'=>$user->id,
+            'email' =>$user->email
+        );
+        $res = $stmt->execute($array);
+        if ($res) {            
+            return 'ok';
+        }
+        return 'fail';
     }
 }
 ?>

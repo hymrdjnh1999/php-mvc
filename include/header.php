@@ -240,6 +240,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </a>
                             </li>
                             <li class="user_action-item">
+                                <a href="index.php?controller=users&action=changePassword" class="user__action-item-link">
+                                    Đổi mật khẩu
+                                </a>
+                            </li>
+                            <li class="user_action-item">
                                 <form action="" method="post">
                                     <a href="index.php?controller=users&action=logout" class="b-0 user__action-item-link">
                                         Đăng Xuất

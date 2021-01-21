@@ -158,6 +158,7 @@ Validator.isConfirmed = function(selector, getConfirmValue, message) {
 	return {
 		selector: selector,
 		test: function(value) {
+			console.log(getConfirmValue());
 			return value === getConfirmValue() ? undefined : message || 'Giá trị nhập vào không chính xác';
 		}
 	};

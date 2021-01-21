@@ -34,6 +34,13 @@ class UsersController extends BaseController
         session_destroy();
         header('location: index.php');
     }
+    public function changePassword(){
+        $result ='';
+        if(isset($_POST['oldPassword']) && isset($_POST['newPassword'])){
+            $result = User::changePassword($_POST['oldPassword'],$_POST['newPassword']);
+        }
+        $this->render('user_change_password',array('hello'=>$result));
+    }
 }
 
 ?>

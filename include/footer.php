@@ -199,12 +199,12 @@
                 <span class="form-message">
                 </span>
             </div>
-            <div class="form-group d-none">
+            <!-- <div class="form-group d-none">
                 <label for="password" class="form-label">Mật khẩu</label>
                 <input type="text" class="form-input" value="test" id="checkField" name="isLogin" autocomplete="on">
                 <span class="form-message">
                 </span>
-            </div>
+            </div> -->
             <button class="form-btn" type="submit">
                 Đăng nhập
             </button>
@@ -297,6 +297,29 @@
     });
 </script>
 
+<script>
+    Validator({
+        form: '#changePasswordForm' /* is change password*/ ,
+        errorSelector: '.form-message',
+        erorrClass: 'error',
+        formGroup: '.form-group',
+        rules: [
+            Validator.isRequired('#oldPassword', 'Mật khẩu không được để trống'),
+            Validator.isRequired('#newPassword', 'Mật khẩu không được để trống'),
+            Validator.minLength('#newPassword', 6, 'Mật khẩu tối thiểu phải có 6 kí tự'),
+            Validator.isRequired('#newPasswordConfirm', 'Mật khẩu không được để trống'),
+            Validator.minLength('#newPasswordConfirm', 6, 'Mật khẩu tối thiểu phải có 6 kí tự'),
+            Validator.isConfirmed('#newPasswordConfirm', function() {
+                return document.querySelector('#changePasswordForm #newPassword').value;
+            }, 'Mật khẩu nhập lại không chính xác'),
+
+        ],
+        onSubmit: (data, formElement) => {
+            formElement.submit();
+        }
+    });
+</script>
+
 <!-- validator of login form -->
 <script>
     Validator({
@@ -337,9 +360,4 @@
 
         }
     });
-</script>
-<script>
-    const test = () => {
-
-    }
 </script>
